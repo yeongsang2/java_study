@@ -4,10 +4,13 @@ import school.*;
 import report.GenerateGradeReport;
 import utils.Define;
 
+import javax.sql.DataSource;
+
 public class TestMain {
     private School goodSchool = School.getInstance();
     private Subject korean;
     private Subject math;
+    private Subject dance;
 
     GenerateGradeReport gradeReport = new GenerateGradeReport();
 
@@ -24,9 +27,13 @@ public class TestMain {
     public void createSubject(){
         korean = new Subject("국어", Define.KOREAN);
         math = new Subject("국어", Define.MATH);
+        dance = new Subject("방송댄스", Define.DANCE);
+
+        dance.setGradeType(Define.PF_TYPE);
 
         goodSchool.addSubject(korean);
         goodSchool.addSubject(math);
+        goodSchool.addSubject(dance);
     }
     public void createStudent(){
         Student student1 = new Student(1,"안성원", korean);
@@ -53,14 +60,26 @@ public class TestMain {
         math.register(student4);
         math.register(student5);
 
+        dance.register(student1);
+        dance.register(student2);
+        dance.register(student3);
+
+
+
         addScoreForStudent(student1,korean, 95);
         addScoreForStudent(student1,math, 56);
+        addScoreForStudent(student1,dance, 95);
+
 
         addScoreForStudent(student2,korean, 95);
         addScoreForStudent(student2,math, 95);
+        addScoreForStudent(student2,dance, 85);
+
 
         addScoreForStudent(student3,korean, 100);
         addScoreForStudent(student3,math, 88);
+        addScoreForStudent(student3,dance, 55);
+
 
         addScoreForStudent(student4,korean, 89);
         addScoreForStudent(student4,math, 95);
